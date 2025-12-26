@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio MorningStar - Conectando Emoções</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #00d2ff;
+            --accent-glow: rgba(0, 210, 255, 0.3);
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+        }
+
+        /* Player Profissional */
+        .main-player {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .cover-art {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #1e293b, #334155);
+            margin: 0 auto 25px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Área de Interação */
+        .interaction-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 25px;
+            height: fit-content;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label { display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-dim); }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: white;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .btn-send {
+            width: 100%;
+            padding: 14px;
+            background: var(--accent);
+            color: #000;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-send:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--accent-glow);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            background: #334155;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .social-btn:hover { background: var(--accent); color: #000; }
+
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">RADIO<span>MORNINGSTAR</span></div>
+        <nav style="color: var(--text-dim); font-size: 0.9rem;">24 Horas no Ar</nav>
+    </header>
+
+    <div class="container">
+        <main class="main-player">
+            <div class="status-badge">
+                <div class="status-dot"></div> AO VIVO AGORA
+            </div>
+            
+            <div class="cover-art">🎵</div>
+            
+            <h1 style="margin: 0 0 10px 0;">Top Sucessos</h1>
+            <p style="color: var(--text-dim); margin-bottom: 30px;">Locutor: Alan Miller</p>
+
+            <audio id="audioPlayer" controls style="width: 100%; filter: invert(100%);">
+                <source src="SUA_URL_DE_STREAMING_AQUI" type="audio/mpeg">
+            </audio>
+
+            <div style="margin-top: 30px; display: flex; justify-content: center; gap: 4px; height: 30px; align-items: flex-end;">
+                <div style="width: 4px; background: var(--accent); height: 80%; border-radius: 2px;"></div>
+                <div style="width: 4px; background: var(--accent); height: 40%; border-radius: 2px;"></div>
+                <div style="width: 4px; background: var(--accent); height: 100%; border-radius: 2px;"></div>
+                <div style="width: 4px; background: var(--accent); height: 60%; border-radius: 2px;"></div>
+                <div style="width: 4px; background: var(--accent); height: 90%; border-radius: 2px;"></div>
+            </div>
+        </main>
+
+        <aside class="interaction-card">
+            <h3 style="margin-top: 0;">Peça sua Música 🎧</h3>
+            <p style="font-size: 0.85rem; color: var(--text-dim);">Envie seu pedido diretamente para o nosso locutor.</p>
+            
+            <form action="#">
+                <div class="input-group">
+                    <label>Seu Nome</label>
+                    <input type="text" placeholder="Ex: Maria Silva">
+                </div>
+                <div class="input-group">
+                    <label>Artista / Música</label>
+                    <input type="text" placeholder="Ex: Queen - Bohemian Rhapsody">
+                </div>
+                <div class="input-group">
+                    <label>Recado</label>
+                    <textarea rows="3" placeholder="Mande um salve para..."></textarea>
+                </div>
+                <button type="button" class="btn-send" onclick="alert('Pedido enviado com sucesso!')">ENVIAR PEDIDO</button>
+            </form>
+
+            <div class="social-links">
+                <a href="#" class="social-btn">WhatsApp</a>
+                <a href="#" class="social-btn">Instagram</a>
+            </div>
+        </aside>
+    </div>
+
+    <footer style="margin-top: auto; padding: 40px; text-align: center; color: var(--text-dim); font-size: 0.8rem;">
+        &copy; 2025 Radio MorningStar- A melhor qualidade sonora.
+    </footer>
+
+</body>
+</html>
